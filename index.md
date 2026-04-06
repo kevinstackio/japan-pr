@@ -11,8 +11,8 @@ hero:
     alt: VitePress
   actions:
     - theme: brand
-      text: 阅读正文
-      link: /guide/article
+      text: 阅读序言
+      link: /journey/preface
     - theme: alt
       text: HSP 计分表
       link: /HSP.pdf

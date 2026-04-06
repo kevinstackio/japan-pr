@@ -25,6 +25,21 @@ export default defineConfig({
   ],
   themeConfig: {
     logo: "/vitepress-logo-mini.svg",
+    nav: [{ text: "日本語", link: "/japanese/gojuon" }],
+    sidebar: {
+      "/journey/": [
+        {
+          text: "赴日计划",
+          items: [{ text: "序言", link: "/journey/preface" }],
+        },
+      ],
+      "/japanese/": [
+        {
+          text: "日本語",
+          items: [{ text: "五十音", link: "/japanese/gojuon" }],
+        },
+      ],
+    },
     socialLinks: [{ icon: "github", link: githubUrl }],
     search: hasAlgolia
       ? {
