@@ -1,11 +1,11 @@
 import { defineConfig } from "vitepress";
 
-const readEnv = (key: string) => process.env[key]?.trim() || "";
-const algoliaAppId = readEnv("ALGOLIA_APP_ID");
-const algoliaApiKey = readEnv("ALGOLIA_API_KEY");
-const algoliaIndexName = readEnv("ALGOLIA_INDEX_NAME");
-const hasAlgolia = Boolean(algoliaAppId && algoliaApiKey && algoliaIndexName);
 const githubUrl = "https://github.com/kevinstackio/japan-pr";
+const algoliaConfig = {
+  appId: "5MDTLT6KV7",
+  apiKey: "5d1c2450c55de9919ef9254517c3d823",
+  indexName: "japan_kevinstack_dev_5mdtlt6kv7_pages",
+} as const;
 
 export default defineConfig({
   title: "JapanPR",
@@ -42,17 +42,9 @@ export default defineConfig({
       ],
     },
     socialLinks: [{ icon: "github", link: githubUrl }],
-    search: hasAlgolia
-      ? {
-          provider: "algolia",
-          options: {
-            appId: algoliaAppId!,
-            apiKey: algoliaApiKey!,
-            indexName: algoliaIndexName!,
-          },
-        }
-      : {
-          provider: "local",
-        },
+    search: {
+      provider: "algolia",
+      options: algoliaConfig,
+    },
   },
 });

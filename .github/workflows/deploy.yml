@@ -38,10 +38,6 @@ jobs:
 
       - name: Build VitePress site
         run: pnpm run docs:build
-        env:
-          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
-          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
-          ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -62,7 +58,6 @@ jobs:
   reindex_algolia:
     runs-on: ubuntu-latest
     needs: deploy
-    if: ${{ needs.deploy.result == 'success' && secrets.ALGOLIA_CRAWLER_ID != '' && secrets.ALGOLIA_CRAWLER_USER_ID != '' && secrets.ALGOLIA_CRAWLER_API_KEY != '' }}
     steps:
       - name: Trigger Algolia crawler reindex
         env:
