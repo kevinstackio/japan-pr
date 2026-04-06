@@ -1,8 +1,9 @@
 import { defineConfig } from "vitepress";
 
-const algoliaAppId = process.env.ALGOLIA_APP_ID;
-const algoliaApiKey = process.env.ALGOLIA_API_KEY;
-const algoliaIndexName = process.env.ALGOLIA_INDEX_NAME;
+const readEnv = (key: string) => process.env[key]?.trim() || "";
+const algoliaAppId = readEnv("ALGOLIA_APP_ID");
+const algoliaApiKey = readEnv("ALGOLIA_API_KEY");
+const algoliaIndexName = readEnv("ALGOLIA_INDEX_NAME");
 const hasAlgolia = Boolean(algoliaAppId && algoliaApiKey && algoliaIndexName);
 const githubUrl = "https://github.com/kevinstackio/japan-pr";
 
